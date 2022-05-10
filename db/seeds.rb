@@ -28,12 +28,7 @@ puts "Creating donations ..."
 Donation.destroy_all
 
 def generate_toronto_coordinates
-  output = []
-
-  output.push(rand(43.64248..43.83201))
-  output.push(rand(-79.609698..-79.386567))
-
-  output
+  [rand(43.64248..43.83201), rand(-79.609698..-79.386567)]
 end
 
 products = (HTTP.get("https://fakestoreapi.com/products")).parse
@@ -52,3 +47,17 @@ conditions = ["Like new", "Good", "Ok", "Broken"]
     longitude: generate_toronto_coordinates[1]
   )
 end
+
+# Comments
+puts "Creating comments"
+Comment.destroy_all
+
+60.times do |index|
+  users[rand(0..4)].comments.create!(
+    donation_id: rand(1..20),
+    comment: Faker::Lorem.sentence,
+    created_at: Faker::Time.backward(days: 2)
+  )
+end
+
+puts "Done seeding!"
