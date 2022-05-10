@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :donations, only: [:index, :show] do
+  resources :donations, only: [:index, :show, :destroy] do
     post :add_donation
     post :remove_donation
   end
