@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :donations, only: [:index, :show] do
+    post :add_donation
+    post :remove_donation
+  end
+
+  get '/donations' => 'donations#show'
+  post '/add-new' => 'donations#create'
+  post '/claim-donation' => 'donations#destroy'
+
 end
