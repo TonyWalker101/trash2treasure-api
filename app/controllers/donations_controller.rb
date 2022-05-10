@@ -3,6 +3,7 @@ class DonationsController < ApplicationController
   end
 
   def index
-    @donations = Donation.all
+    donations = Donation.all
+    render json: donations.to_json
   end
 end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   get '/donations' => 'donations#index'
-  post '/add-new' => 'donations#create'
-  post '/claim-donation' => 'donations#destroy'
+  # post '/add-new' => 'donations#create'
+  # post '/claim-donation' => 'donations#destroy'
 
 end
