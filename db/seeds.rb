@@ -8,5 +8,16 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 5.times do |i|
-  User.create!(user_name: Faker::Internet.username, email: Faker::Internet.email, password: Faker::Internet.password, location: Faker::Address.full_address)
+  User.create!(user_name: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, location: Faker::Address.full_address)
 end
+
+def generate_toronto_coordinates do
+  output = []
+
+  output.push(rand(43.64248..43.83201))
+  output.push(rand(-79.609698..-79.386567))
+
+  output
+end
+
+10.times
