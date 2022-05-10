@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_09_232741) do
+ActiveRecord::Schema.define(version: 2022_05_10_211328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2022_05_09_232741) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.bigint "donations_id"
     t.text "comment"
-    t.index ["donations_id"], name: "index_comments_on_donations_id"
+    t.bigint "donation_id"
+    t.index ["donation_id"], name: "index_comments_on_donation_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2022_05_09_232741) do
     t.string "password"
   end
 
-  add_foreign_key "comments", "donations", column: "donations_id"
+  add_foreign_key "comments", "donations"
   add_foreign_key "comments", "users"
   add_foreign_key "donations", "users"
 end
