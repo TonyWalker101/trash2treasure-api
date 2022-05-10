@@ -1,7 +1,7 @@
 class Donation < ApplicationRecord
   belongs_to :user
   has_many :comments
-  mount_uploader: image, ProductImageUploader
+  # mount_uploader: image, ProductImageUploader
 
   validates :name, presence: true
   validates :location, presence: true

@@ -1,4 +1,5 @@
 require 'faker'
+require 'http'
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -7,11 +8,26 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-5.times do |i|
-  User.create!(user_name: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, location: Faker::Address.full_address)
-end
+puts "Seeding Data ..."
 
-def generate_toronto_coordinates do
+# Users
+
+puts "Creating users ..."
+User.destroy_all
+
+user1 = User.create!(user_name: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, location: Faker::Address.full_address)
+user2 = User.create!(user_name: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, location: Faker::Address.full_address)
+user3 = User.create!(user_name: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, location: Faker::Address.full_address)
+user4 = User.create!(user_name: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, location: Faker::Address.full_address)
+user5 = User.create!(user_name: Faker::Internet.unique.username, email: Faker::Internet.unique.email, password: Faker::Internet.password, location: Faker::Address.full_address)
+
+users = [user1, user2, user3, user4, user5]
+
+# Donations
+puts "Creating donations ..."
+Donation.destroy_all
+
+def generate_toronto_coordinates
   output = []
 
   output.push(rand(43.64248..43.83201))
@@ -20,4 +36,19 @@ def generate_toronto_coordinates do
   output
 end
 
-10.times
+products = (HTTP.get("https://fakestoreapi.com/products")).parse
+conditions = ["Like new", "Good", "Ok", "Broken"]
+
+20.times do |index|
+  users[rand(0..4)].donations.create!(
+    name: products[index]['title'], 
+    location: Faker::Lorem.sentence, 
+    description: products[index]['description'],
+    condition: conditions[rand(0..3)],
+    available: true,
+    image: products[index]['image'],
+    created_at: Faker::Time.backward(days: 2),
+    latitude: generate_toronto_coordinates[0],
+    longitude: generate_toronto_coordinates[1]
+  )
+end
