@@ -3,7 +3,7 @@ class DonationsController < ApplicationController
   end
 
   def index
-    donations = Donation.all
+    donations = Donation.where("available = true")
     render json: donations.to_json
   end
 end
