@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     post :remove_donation
   end
 
+  resources :users, only: [:index, :show]
+
   get '/donations' => 'donations#index'
+  get '/users' => 'users#index'
   # post '/add-new' => 'donations#create'
   # post '/claim-donation' => 'donations#destroy'
 
