@@ -32,7 +32,7 @@ def generate_toronto_coordinates
 end
 
 products = (HTTP.get("https://fakestoreapi.com/products")).parse
-conditions = ["Like new", "Good", "Ok", "Broken"]
+conditions = ["Like New", "Good", "Acceptable", "Broken"]
 
 20.times do |index|
   users[rand(0..4)].donations.create!(
