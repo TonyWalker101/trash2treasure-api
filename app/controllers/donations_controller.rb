@@ -1,9 +1,33 @@
 class DonationsController < ApplicationController
+  def new
+    user = User.find_by(id: 1)
+    donation = user.donations.new(
+      name: params[:name],
+      location: params[:location], 
+      description: params[:description],
+      condition: params[:condition],
+      available: true,
+      image: params[:image],
+      created_at: Time.now,
+      latitude: params[:latitude],
+      longitude: params[:longitude]
+    )
+    donation.save!
+  end
+  
   def show
   end
 
   def index
-    donations = Donation.where("available = true")
+    donations = Donation.where('available = true')
     render json: donations.to_json
   end
+
+  def destroy
+    donation = Donation.find(params[:id])
+    donation['available'] = false
+    redirect 
+  end
+
 end
+
