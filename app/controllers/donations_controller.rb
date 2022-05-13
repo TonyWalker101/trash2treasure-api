@@ -1,4 +1,6 @@
+require 'pp'
 class DonationsController < ApplicationController
+
   def new
     user = User.find_by(id: 1)
     donation = user.donations.new(
@@ -23,10 +25,10 @@ class DonationsController < ApplicationController
     render json: donations.to_json
   end
 
-  def destroy
-    donation = Donation.find(params[:id])
-    donation['available'] = false
-    redirect 
+  def edit
+    donation = Donation.find_by(id: params[:id])
+    donation[:available] = false
+    donation.save!
   end
 
 end
