@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'donations#index'
 
-  resources :donations, only: [:index, :show, :new, :destroy]
+  resources :donations, only: [:index, :show, :new, :edit]
 
   resources :users, only: [:index, :show]
 
@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   get '/comments' => 'comments#index'
 
   post '/add-donation' => 'donations#new'
-  post '/claim-donation' => 'donations#destroy'
+  post '/claim-donation' => 'donations#edit'
 
 end
