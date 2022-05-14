@@ -28,7 +28,7 @@ class DonationsController < ApplicationController
   def edit
     donation = Donation.find_by(id: params[:id])
     donation[:available] = false
-    donation.save!
+    donation.save(validate: false)
   end
 
 end
