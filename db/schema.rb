@@ -16,18 +16,16 @@ ActiveRecord::Schema.define(version: 2022_05_10_211328) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "donation_id"
+    t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.text "comment"
-    t.bigint "donation_id"
     t.index ["donation_id"], name: "index_comments_on_donation_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "donations", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.string "name"
     t.text "location"
@@ -37,16 +35,18 @@ ActiveRecord::Schema.define(version: 2022_05_10_211328) do
     t.decimal "latitude"
     t.decimal "longitude"
     t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "user_name"
     t.string "email"
     t.string "location"
-    t.string "user_name"
     t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "comments", "donations"
