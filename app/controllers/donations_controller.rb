@@ -1,4 +1,3 @@
-require 'pp'
 class DonationsController < ApplicationController
 
   def new
