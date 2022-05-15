@@ -4,7 +4,6 @@ class Donation < ApplicationRecord
   # mount_uploader: image, ProductImageUploader
 
   validates :name, presence: true
-  validates :location, presence: true
   validates :description, presence: true
   validates :condition, presence: true
   validates :available, presence: true
