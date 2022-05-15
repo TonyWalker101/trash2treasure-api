@@ -4,7 +4,6 @@ class DonationsController < ApplicationController
     user = User.find_by(id: 1)
     donation = user.donations.new(
       name: params[:name],
-      location: params[:location], 
       description: params[:description],
       condition: params[:condition],
       available: true,
