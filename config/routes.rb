@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   post '/add-donation' => 'donations#new'
   post '/claim-donation' => 'donations#edit'
+  post 'add-comment' => 'comments#new'
 
 end
