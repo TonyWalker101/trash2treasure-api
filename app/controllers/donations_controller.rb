@@ -6,6 +6,7 @@ class DonationsController < ApplicationController
       name: params[:name],
       description: params[:description],
       condition: params[:condition],
+      location: params[:location],
       available: true,
       image: params[:image],
       created_at: Time.now,
