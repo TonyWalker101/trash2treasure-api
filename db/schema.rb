@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_10_211328) do
+ActiveRecord::Schema.define(version: 2022_05_17_025918) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
@@ -27,7 +28,7 @@ ActiveRecord::Schema.define(version: 2022_05_10_211328) do
 
   create_table "donations", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "name"
+    t.citext "name"
     t.text "location"
     t.text "description"
     t.string "condition"
