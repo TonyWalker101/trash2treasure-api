@@ -29,5 +29,10 @@ class DonationsController < ApplicationController
     donation.save(validate: false)
   end
 
+  def search
+    results = Donation.find_by(name: params[:name])
+    render json: results.to_json
+  end
+
 end
 
