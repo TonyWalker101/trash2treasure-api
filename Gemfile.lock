@@ -90,6 +90,12 @@ GEM
       rake
     globalid (1.0.0)
       activesupport (>= 5.0)
+    google-maps (3.0.7)
+      hashie (~> 4.1, >= 4.1.0)
+      httpclient (~> 2.7, >= 2.7.1)
+      multi_json (>= 1.15)
+      ruby-hmac (~> 0.4.0)
+    hashie (4.1.0)
     http (5.0.4)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -98,6 +104,7 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
+    httpclient (2.8.3)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -121,6 +128,7 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.15.0)
     msgpack (1.5.1)
+    multi_json (1.15.0)
     nio4r (2.5.8)
     nokogiri (1.13.5)
       mini_portile2 (~> 2.8.0)
@@ -171,6 +179,7 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.3.1)
     rexml (3.2.5)
+    ruby-hmac (0.4.0)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -235,6 +244,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   faker
+  google-maps
   http
   jbuilder (~> 2.7)
   listen (~> 3.3)
