@@ -30,7 +30,7 @@ class DonationsController < ApplicationController
   end
 
   def search
-    results = Donation.where(name: params[:name]).load
+    results = Donation.where("name like ?", "%#{params[:name]}%").load
     render json: results.to_json
   end
 
