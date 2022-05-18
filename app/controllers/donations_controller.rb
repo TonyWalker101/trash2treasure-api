@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-
+  
   def new
     user = User.find_by(id: 1)
     donation = user.donations.new(
@@ -30,14 +30,27 @@ class DonationsController < ApplicationController
   end
 
   def search
-    Google::Maps.configure do |config|
-      config.authentication_mode = Google::Maps::Configuration::API_KEY
-      config.api_key = ENV['GOOGLE_MAPS_API_KEY']
+
+    results = []
+
+    
+    if defined?(params[:location])
+      
+      search_coordinates = params[:location]
+      donations = Donation.where('available = true')
+      
+      donations.each do |d|
+        donation_coordinates = helpers.coordinates_to_string(d.latitude, d.longitude)
+        if helpers.calculate_distance(search_coordinates, donation_coordinates) < 30000
+          results.push(d)
+        end
+      
+      end
+
     end
 
-    results = Donation.where("name like ?", "%#{params[:name]}%").load
+    # results = Donation.where("name like ?", "%#{params[:name]}%").load
     render json: results.to_json
   end
 
 end
-
