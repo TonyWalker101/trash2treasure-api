@@ -37,7 +37,7 @@ conditions = ["Like New", "Good", "Acceptable", "Broken"]
 20.times do |index|
   users[rand(0..4)].donations.create!(
     name: products[index]['title'], 
-    location: Faker::Lorem.sentence, 
+    location: Faker::Address.street_address, 
     description: products[index]['description'],
     condition: conditions[rand(0..3)],
     available: true,

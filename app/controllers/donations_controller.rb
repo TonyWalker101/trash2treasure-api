@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-
+  
   def new
     user = User.find_by(id: 1)
     donation = user.donations.new(
@@ -31,9 +31,26 @@ class DonationsController < ApplicationController
   end
 
   def search
-    results = Donation.where("name like ?", "%#{params[:name]}%").load
+
+    results = Donation.where("available = true")
+    
+    if params[:location] != nil
+      
+      search_coordinates = Google::Maps.geocode(params[:location])
+      search_latitude = search_coordinates.first.latitude
+      search_longitude = search_coordinates.first.longitude
+
+      results = Donation.where(["latitude > ? and latitude < ? and longitude > ? and longitude < ?", 
+      search_latitude - 0.3, search_latitude + 0.3, search_longitude - 0.3, search_longitude + 0.3])
+
+    end
+
+    if params[:name] != nil
+      results = results.where("name like ?", "%#{params[:name]}%").load
+    end
+
     render json: results.to_json
+
   end
 
 end
-
