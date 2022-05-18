@@ -36,21 +36,16 @@ class DonationsController < ApplicationController
     
     if defined?(params[:location])
       
-      search_coordinates = params[:location]
-      donations = Donation.where('available = true')
-      
-      donations.each do |d|
-        donation_coordinates = helpers.coordinates_to_string(d.latitude, d.longitude)
-        if helpers.calculate_distance(search_coordinates, donation_coordinates) < 30000
-          results.push(d)
-        end
-      
-      end
+      search_coordinates = Google::Maps.geocode(params[:location])
+      search_latitude = search_coordinates.first.latitude
+      search_longitude = search_coordinates.first.longitude
+      donations = Donation.where(["latitude > ? and latitude < ? and longitude > ? and longitude < ?", 
+      search_latitude - 0.3, search_latitude + 0.3, search_longitude - 0.3, search_longitude+0.3])
 
     end
 
     # results = Donation.where("name like ?", "%#{params[:name]}%").load
-    render json: results.to_json
+    render json: donations.to_json
   end
 
 end
