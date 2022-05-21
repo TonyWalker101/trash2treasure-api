@@ -31,8 +31,6 @@ class DonationsController < ApplicationController
   end
 
   def search
-
-    results = Donation.where("available = true")
     
     if params[:location] != nil
       
@@ -42,7 +40,10 @@ class DonationsController < ApplicationController
 
       results = Donation.where(["latitude > ? and latitude < ? and longitude > ? and longitude < ?", 
       search_latitude - 0.3, search_latitude + 0.3, search_longitude - 0.3, search_longitude + 0.3])
+      .order('created_at DESC')
 
+    else 
+      results = Donation.where("available = true").order('created_at DESC')
     end
 
     if params[:name] != nil
