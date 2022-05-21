@@ -31,26 +31,31 @@ class DonationsController < ApplicationController
   end
 
   def search
+
+    coordinates = { latitude: nil, longitude: nil }
+    search_results = Donation.where("available = true").order('created_at DESC')
     
     if params[:location] != nil
       
       search_coordinates = Google::Maps.geocode(params[:location])
       search_latitude = search_coordinates.first.latitude
       search_longitude = search_coordinates.first.longitude
+      
+      coordinates = { latitude: search_latitude, longitude: search_longitude }
 
-      results = Donation.where(["latitude > ? and latitude < ? and longitude > ? and longitude < ?", 
+      search_results = Donation.where(["latitude > ? and latitude < ? and longitude > ? and longitude < ?", 
       search_latitude - 0.3, search_latitude + 0.3, search_longitude - 0.3, search_longitude + 0.3])
       .order('created_at DESC')
 
-    else 
-      results = Donation.where("available = true").order('created_at DESC')
     end
 
     if params[:name] != nil
-      results = results.where("name like ?", "%#{params[:name]}%").load
+      search_results = search_results.where("name like ?", "%#{params[:name]}%").load
     end
 
-    render json: results.to_json
+    output = [coordinates, search_results]
+
+    render json: output.to_json
 
   end
 
