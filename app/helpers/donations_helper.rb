@@ -9,8 +9,4 @@ module DonationsHelper
     "#{latitude},#{longitude}"
   end
 
-  def calculate_distance location1, location2
-    Google::Maps.route(location1, location2).distance.value
-  end
-
 end
