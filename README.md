@@ -10,14 +10,14 @@ To be used in conjunction with the [frontend app](https://github.com/TonyWalker1
 Created with Ruby 2.6.6 and Rails 6.1.5.
 
 ## System dependencies
-- sqlite3
-- puma
-- jbuilder
-- pg
-- faker
-- http
+- SQLite3
+- Puma
+- JBuilder
+- Postgres
+- Faker
+- HTTP
 - rack-cors
-- google-maps
+- Google Maps
 
 ## API Setup
 1. cd into the directory 
