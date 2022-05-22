@@ -20,12 +20,14 @@ Created with Ruby 2.6.6 and Rails 6.1.5.
 - google-maps
 
 ## API Setup
-1. Run 'bundle install' to install required gems
-2. Rename config/local_env.example.yml to config/local_env.yml and add a valid Google Maps API key string.
-3. Run 'rails db:setup' to create the database, load the schema and initialize the seed data.
-4. Run 'rails start' to start the API.
+1. cd into the directory 
+2. Run `bundle install` to install required gems
+3. Rename config/local_env.example.yml to config/local_env.yml and add a valid Google Maps API key string.
+4. Run `rails db:setup` to create the database, load the schema and initialize the seed data.
+5. Run `rails start` to start the API.
 
 ## Frontend Setup
 1. Clone the [frontend app](https://github.com/TonyWalker101/trash2treasure).
-2. Run 'npm install' to install the dependencies.
-3. Run 'npm start'
+2. cd into the directory 
+3. Run `npm install` to install the dependencies.
+4. Run `npm start`
