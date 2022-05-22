@@ -10,13 +10,12 @@ To be used in conjunction with the [frontend app](https://github.com/TonyWalker1
 Created with Ruby 2.6.6 and Rails 6.1.5.
 
 ## System dependencies
-- SQLite3
+- Postgres
 - Puma
 - JBuilder
-- Postgres
 - Faker
 - HTTP
-- rack-cors
+- Rack-CORS
 - Google Maps
 
 ## API Setup
