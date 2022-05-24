@@ -1,4 +1,4 @@
-# Trash2Treasure API
+# Trash2Treasure API - version 1.0.0
 
 Backend API of the final project for the Lighthouse Labs Web Development Program created by [Marcos Spomberg](https://github.com/spomberg), [Tony Walker](https://github.com/TonyWalker101) and [Siyi Xie](https://github.com/isissi).
 
@@ -25,9 +25,8 @@ Created with Ruby 2.6.6 and Rails 6.1.5.
 4. Run `rails db:setup` to create the database, load the schema and initialize the seed data.
 5. Run `rails start` to start the API.
 
-## Frontend Setup
-1. Clone the [frontend app](https://github.com/TonyWalker101/trash2treasure).
-2. cd into the directory 
-3. Run `npm install` to install the dependencies.
-4. Rename .env.development.example.local to .env.development.local and add a valid Google Maps API key string.
-5. Run `npm start`
+## [Frontend](https://github.com/TonyWalker101/trash2treasure) Setup
+1. cd into the directory 
+2. Run `npm install` to install the dependencies.
+3. Rename .env.development.example.local to .env.development.local and add a valid Google Maps API key string.
+4. Run `npm start`
