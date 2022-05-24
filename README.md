@@ -28,5 +28,5 @@ Created with Ruby 2.6.6 and Rails 6.1.5.
 ## [Frontend](https://github.com/TonyWalker101/trash2treasure) Setup
 1. cd into the directory 
 2. Run `npm install` to install the dependencies.
-3. Rename .env.development.example.local to .env.development.local and add a valid Google Maps API key string.
+3. Rename .env.development.example.local as .env.development.local and add a valid Google Maps API key string.
 4. Run `npm start`
