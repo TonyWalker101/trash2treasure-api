@@ -31,6 +31,10 @@ def generate_toronto_coordinates
   [rand(43.64248..43.83201), rand(-79.609698..-79.386567)]
 end
 
+def generate_vancouver_coordinates
+  [rand(49.190647..49.213244), rand(-123.199614..-122.899316)]
+end
+
 products = (HTTP.get("https://fakestoreapi.com/products")).parse
 conditions = ["Like New", "Good", "Acceptable", "Broken"]
 
@@ -47,6 +51,30 @@ conditions = ["Like New", "Good", "Acceptable", "Broken"]
     longitude: generate_toronto_coordinates[1]
   )
 end
+
+users[rand(0..4)].donations.create!(
+    name: "Seville Tower Fan", 
+    location: Faker::Address.street_address, 
+    description: "Free Tower Fan! Still works - no need for it anymore.",
+    condition: conditions[rand(0..3)],
+    available: true,
+    image: "https://drive.google.com/file/d/14Upf2PBlQwU1AJWO5GhUp6UVwOoI1JXb/view?usp=sharing",
+    created_at: Faker::Time.backward(days: 2),
+    latitude: generate_toronto_coordinates[0],
+    longitude: generate_toronto_coordinates[1]
+)
+
+users[rand(0..4)].donations.create!(
+    name: "Beige Couch", 
+    location: Faker::Address.street_address, 
+    description: "Well worn couch - up for grabs!",
+    condition: conditions[3],
+    available: true,
+    image: "",
+    created_at: Faker::Time.backward(days: 2),
+    latitude: generate_vancouver_coordinates[0],
+    longitude: generate_vancouver_coordinates[1]
+)
 
 # Comments
 puts "Creating comments"
