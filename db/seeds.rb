@@ -32,25 +32,10 @@ def generate_toronto_coordinates
 end
 
 def generate_vancouver_coordinates
-  [rand(49.190647..49.213244), rand(-123.199614..-122.899316)]
+  [rand(49.129527..49.273097), rand(-123.244367..-122.738665)]
 end
 
-products = (HTTP.get("https://fakestoreapi.com/products")).parse
 conditions = ["Like New", "Good", "Acceptable", "Broken"]
-
-# 20.times do |index|
-#   users[rand(0..4)].donations.create!(
-#     name: products[index]['title'], 
-#     location: Faker::Address.street_address, 
-#     description: products[index]['description'],
-#     condition: conditions[rand(0..3)],
-#     available: true,
-#     image: products[index]['image'],
-#     created_at: Faker::Time.backward(days: 2),
-#     latitude: generate_toronto_coordinates[0],
-#     longitude: generate_toronto_coordinates[1]
-#   )
-# end
 
 users[rand(0..4)].donations.create!(
     name: "Hot Tub", 
