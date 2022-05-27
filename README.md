@@ -3,7 +3,7 @@
 Backend API of the final project for the Lighthouse Labs Web Development Program created by [Marcos Spomberg](https://github.com/spomberg), [Tony Walker](https://github.com/TonyWalker101) and [Siyi Xie](https://github.com/isissi).
 
 ## Trash2Trasure
-Trash2Treasure is a platform for users to list items (treasures) that are being left for donation in public spaces. It realies heavily on geolocation and the Google Maps API. Users are able to add and claims donations/trasures, comment on each donation and search by location and item name.
+Trash2Treasure is a platform for users to list items (treasures) that are being left for donation in public spaces. It realies heavily on geolocation and the Google Maps API. Users are able to add and claims donations/treasures, comment on each donation and search by location and item name.
 
 To be used in conjunction with the [frontend app](https://github.com/TonyWalker101/trash2treasure).
 
